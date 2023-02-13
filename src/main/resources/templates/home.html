@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<title>トップページ</title>
+</head>
+<body>
+<!-- ログイン済みの時はこれが表示される -->
+<th:block th:if="${session.loginId}">
+	<div class="container">
+		<h1>ProgManSys</h1>
+		<ul>
+			<li>新規プロジェクト</li>
+			<li>既存プロジェクト</li>
+			<li>ヘルプ</li>
+			<li><a th:href="@{/logout}">ログアウト</a></li>
+		</ul>
+	</div>
+</th:block>
+
+<!-- ログインしていないときはこれが表示される -->
+<th:block th:unless="${session.loginId}">
+	<div class="wrapper fadeInDown">
+		<div id="formContent">
+			<!-- タブタイトル -->
+			 
+			<!-- アイコン -->
+			<div class="fadeIn first">
+				<img th:src="@{/svg/login.svg}" id="icon" alt="Icon" />
+			</div>
+			
+			<!-- ログインフォーム -->
+			<form method="post" th:object="${admin}">
+				<span th:errors="*{loginId}" class="error"></span>
+				<input type="email" id="login" class="fadeIn second" th:field="*{loginId}" placeholder="メールアドレス">
+				<input type="password" id="password" class="fadeIn third" th:field="*{loginPass}" placeholder="パスワード">
+				<input type="submit" class="fadeIn fourth" value="ログイン">
+			</form>
+			
+			<!-- パスワード忘却フォーム -->
+			<div id="formFooter">
+				<a class="underlineHover" href="#">パスワードを忘れましたか?</a>
+			</div>
+		</div>
+	</div>
+</th:block>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
