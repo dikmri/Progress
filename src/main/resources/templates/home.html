@@ -8,13 +8,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 	<link rel="stylesheet" th:href="@{/css/style.css}">
-	<title>トップページ</title>
+	<title>Progress</title>
 </head>
 <body>
 <!-- ログイン済みの時はこれが表示される -->
 <th:block th:if="${session.loginId}">
 	<div class="container">
-		<h1>ProgManSys</h1>
+		<h1>Progress</h1>
 		<ul>
 			<li>新規プロジェクト</li>
 			<li>既存プロジェクト</li>
