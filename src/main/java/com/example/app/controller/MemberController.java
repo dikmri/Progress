@@ -35,6 +35,11 @@ public class MemberController {
 		return "members/list";
 	}
 	
+	@GetMapping("/make")
+	public String make(Model model) throws Exception{
+		return "project/makeProject";
+	}
+	
 	@GetMapping("/add")
 	public String addGet(Model model) throws Exception{
 		model.addAttribute("title","会員の追加");
